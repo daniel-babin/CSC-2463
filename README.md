@@ -6,3 +6,6 @@ Repository for CSC 2463 assignments
 * https://daniel-babin.github.io/CSC-2463/drawing-with-p5/drawing-with-p5-example-2/
 * https://daniel-babin.github.io/CSC-2463/drawing-with-p5/drawing-with-p5-example-3/
 * https://daniel-babin.github.io/CSC-2463/drawing-with-p5/drawing-with-p5-example-4/
+
+## Paint App Assignment URLs
+* https://daniel-babin.github.io/CSC-2463/PaintApp
