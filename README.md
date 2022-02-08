@@ -9,3 +9,6 @@ Repository for CSC 2463 assignments
 
 ## Paint App Assignment URL
 * https://daniel-babin.github.io/CSC-2463/PaintApp
+
+## Sprite Animation Assignment URL
+* https://daniel-babin.github.io/CSC-2463/SpriteAnimation
