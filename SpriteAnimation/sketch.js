@@ -1,5 +1,6 @@
 let character;
 let character2;
+let charcter3;
 
 function preload() {
   spriteSheet = loadImage("Viking.png");
