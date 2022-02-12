@@ -1,15 +1,16 @@
 //Universal variables
-//let
-let bugImage = [];
-let imageURL = "https://github.com/daniel-babin/CSC-2463/tree/main/BigSquish/BigSquichImages/"
+let Bug1, Bug2, Bug3, Bug4, walking;
 let walls = [];
 let directions = [0, 90, 180, 270];
 let bugSpeed = 1.5;
 
-//Preload images for game
-function preload(){
-  loadImage("background.png");
-}
+//Preload Bug images
+//function preload(){
+  //loadImage("Bug1");
+  //loadImage("Bug2");
+  //loadImage("Bug3");
+  //loadImage("Bug4");
+//}
 
 //Create game canvas
 function setup() {
@@ -18,5 +19,5 @@ function setup() {
 
 //Physical game mechanics
 function draw() {
-  background("background.png");
+  background(220);
 }
