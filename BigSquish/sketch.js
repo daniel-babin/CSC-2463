@@ -1,7 +1,7 @@
 //Universal variables
 let bgImage;
 let bugImage = [];
-let imageURL = "https://github.com/daniel-babin/CSC-2463/tree/main/BigSquish/BigSquichImages/"
+let imageURL = "https://github.com/daniel-babin/CSC-2463/tree/main/BigSquich/BigSquichImages/"
 let walls = [];
 let directions = [0, 90, 180, 270];
 let bugSpeed = 1.5;
