@@ -1,23 +1,22 @@
 //Universal variables
-let Bug1, Bug2, Bug3, Bug4, walking;
-let walls = [];
-let directions = [0, 90, 180, 270];
-let bugSpeed = 1.5;
+let spriteSheet;
+let bug = [];
+let walk;
+let count = 10;
 
-//Preload Bug images
-//function preload(){
-  //loadImage("Bug1");
-  //loadImage("Bug2");
-  //loadImage("Bug3");
-  //loadImage("Bug4");
-//}
-
-//Create game canvas
-function setup() {
-  createCanvas(800, 800);
+function preload() //Spritesheet it 512x512 pixels... 256x256 per bug
+{
+  spriteSheet = loadImage("BugSheet");
 }
 
-//Physical game mechanics
-function draw() {
-  background(220);
+function setup()
+{
+  createCanvas(600, 600);
+  imageMode(CENTER);
+}
+
+function draw();
+{
+  //background(255, 255, 255);
+  image(spriteSheet, 0, 0, 200, 200);
 }
