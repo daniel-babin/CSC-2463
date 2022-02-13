@@ -6,7 +6,7 @@ let count = 10;
 
 function preload() //Spritesheet it 512x512 pixels... 256x256 per bug
 {
-  spriteSheet = loadImage("BugSheet");
+  spriteSheet = loadImage("BugSheet.png");
 }
 
 function setup()
@@ -15,8 +15,8 @@ function setup()
   imageMode(CENTER);
 }
 
-function draw();
+function draw()
 {
   //background(255, 255, 255);
-  image(spriteSheet, 0, 0, 200, 200);
+  image(spriteSheet, 300, 300, 300, 300, 0, 0, 256, 256);
 }
