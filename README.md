@@ -14,4 +14,4 @@ Repository for CSC 2463 assignments
 * https://daniel-babin.github.io/CSC-2463/SpriteAnimation
 
 ## Bug Squish Assignment URL
-* https://daniel-babin.github.io/CSC-2463/BigSquish
+* 
