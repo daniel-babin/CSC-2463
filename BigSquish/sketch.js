@@ -15,8 +15,8 @@ function setup() {
   imageMode(CENTER);
   score = 0;
   for(i = 0; i < count; i++){
-    character[i] = new Character(spriteSheet, random(50, 550), 
-    random(50, 550), random(1, 5), random([-1, 1]));
+    character[i] = new Character(spriteSheet, random(50, 750), 
+    random(50, 750), random(1, 5), random([-1, 1]));
   }
 }
 
@@ -48,12 +48,7 @@ function draw() {
     let totalTime = 10;
     text("TIME: " + (totalTime - time), 10, 30);
     text("SCORE: " + score, 10, 60);
-    //Spawn more bugs
-    if(score == 10 || score == 20) {
-      for(i = 0; i < count; i++){
-        character[i].draw();
-      }
-    }
+    
     if (time >= 10) {
       gameState = 'end';
     }
