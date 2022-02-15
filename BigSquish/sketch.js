@@ -2,7 +2,7 @@ let character = [];
 let spriteSheet;
 let count = 10;
 let sx = 0;
-let startTime;
+let startTime, score;
 let gameState = 'wait';
 
 //Spritesheet it 1024x512 pixels... 256x256 per bug
@@ -13,10 +13,15 @@ function preload() {
 function setup() {
   createCanvas(800, 800);
   imageMode(CENTER);
+  score = 0;
   for(i = 0; i < count; i++){
     character[i] = new Character(spriteSheet, random(50, 550), 
     random(50, 550), random(1, 5), random([-1, 1]));
   }
+}
+
+function timer() {
+  return int((millis() - startTime) / 1000);
 }
 
 function mousePressed() {
@@ -25,15 +30,11 @@ function mousePressed() {
   }
 }
 
-function timer() {
-  return int((millis() - startTime) / 1000);
-}
-
 function draw() {
   background(245);
+  textSize(30);
   if (gameState == 'wait') {
-    textSize(30);
-    text("CLICK ANYWHERE TO START", 150, 350);
+    text("CLICK ANYWHERE TO START", 180, height / 2);
     if (mouseIsPressed) {
       startTime = millis();
       gameState = 'playing';
@@ -46,6 +47,13 @@ function draw() {
     let time = timer();
     let totalTime = 10;
     text("TIME: " + (totalTime - time), 10, 30);
+    text("SCORE: " + score, 10, 60);
+    //Spawn more bugs
+    if(score == 10 || score == 20) {
+      for(i = 0; i < count; i++){
+        character[i].draw();
+      }
+    }
     if (time >= 10) {
       gameState = 'end';
     }
@@ -56,6 +64,7 @@ function draw() {
     if (mouseIsPressed){
       startTime = millis();
       gameState = 'playing';
+      setup();
     }
   }
 }
@@ -67,15 +76,17 @@ class Character {
     this.x = x;
     this.y = y;
     this.move = 0;
-    this.facing = 1;
+    this.facing = move;
     this.speed = speed;
     this.move = move;
+    this.grabbed = false;
   }
 
   draw() {
     push();
     translate(this.x, this.y);
     scale(this.facing, 1);
+    rotate(PI / 2);
 
     if(this.move == 0) {
       image(this.spriteSheet, 0, 0, 150, 150, 0, 256, 256, 256);
@@ -115,6 +126,7 @@ class Character {
     if (mouseX > this.x - 40 && mouseX < this.x + 40 && mouseY > this.y - 40 && mouseY < this.y + 40){
       this.stop();
       this.grabbed = true;
+      score++;
     }
   }
 }
