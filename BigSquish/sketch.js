@@ -95,7 +95,7 @@ class Character {
       image(this.spriteSheet, 0, 0, 150, 150, 256 * (this.sx + 1), 0, 256, 256);
     }
 
-    if (frameCount % 12 == 0) {
+    if (frameCount % 5 == 0) {
       this.sx = (this.sx + 1) % 3;
     }
     this.x += this.speed * this.move;
