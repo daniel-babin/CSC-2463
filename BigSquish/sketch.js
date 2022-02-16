@@ -1,6 +1,6 @@
 let character = [];
 let spriteSheet;
-let count = 10;
+let count = 100;
 let sx = 0;
 let startTime, score;
 let gameState = 'wait';
@@ -45,17 +45,17 @@ function draw() {
       character[i].draw();
     }
     let time = timer();
-    let totalTime = 10;
+    let totalTime = 30;
     text("TIME: " + (totalTime - time), 10, 30);
-    text("SCORE: " + score, 10, 60);
-    
-    if (time >= 10) {
+    text("SCORE: " + score, 10, 60);    
+    if (time >= 30) {
       gameState = 'end';
     }
   }
   else if (gameState == 'end') {
     text("GAME OVER", 260, 300);
     text("CLICK ANYWHERE TO RESTART", 150, 400);
+    text("SCORE: " + score, 300, 500);
     if (mouseIsPressed){
       startTime = millis();
       gameState = 'playing';
@@ -84,7 +84,8 @@ class Character {
     rotate(PI / 2);
 
     if(this.move == 0) {
-      image(this.spriteSheet, 0, 0, 150, 150, 0, 256, 256, 256);
+      if (this.grabbed){
+        image(this.spriteSheet, 0, 0, 150, 150, 0, 256, 256, 256); }
     }
     else {
       image(this.spriteSheet, 0, 0, 150, 150, 256 * (this.sx + 1), 0, 256, 256);
