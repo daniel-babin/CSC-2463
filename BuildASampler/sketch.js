@@ -1,6 +1,10 @@
-//In class Feb 15
-let sound1 = new tone.Player('media/Extra%20Life%20Sound%20Effect%20(%20FREE%20DOWNLOAD%20).wav');
+const { Tone } = require("./Tone");
 
+//In class Feb 15
+let sound1 = new Tone.Player('media/Extra%20Life%20Sound%20Effect%20(%20FREE%20DOWNLOAD%20).wav');
+let sounds = new Tone.Players({
+  'shot': 'media/'
+})
 function setup() {
   createCanvas(400, 400);
   sound1.toDestination();
