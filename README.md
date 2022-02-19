@@ -15,3 +15,6 @@ Repository for CSC 2463 assignments
 
 ## Bug Squish Assignment URL
 * https://daniel-babin.github.io/CSC-2463/BigSquish
+
+## 2.1 Sampler Assigment
+* https://daniel-babin.github.io/CSC-2463/BuildASampler 
