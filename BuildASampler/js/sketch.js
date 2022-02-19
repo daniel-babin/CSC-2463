@@ -1,26 +1,17 @@
 // Set up Tone
 const sounds = new Tone.Players({
-  shot: "media/02-shot.mp3",
-  through: "media/03-through.mp3",
-  theHeart: "media/04-theHeart.mp3",
-  // andYoure: "media/05-andYoure.mp3",
-  // to: "media/06-to.mp3",
-  // blame: "media/07-blame.mp3",
-  // darlin: "media/08-darlin.mp3",
-  // you: "media/09-you.mp3",
-  // give: "media/10-give.mp3",
-  // love: 'media/11-love.mp3',
-  // a: 'media/12-a.mp3',
-  // bad: 'media/13-bad.mp3',
-  // nameClip: 'media/14-name.mp3'
+  amongUs: "media/sounds/among-us.mp3",
+  bonk: "media/sounds/bonk.mp3",
+  hehe: "media/sounds/hehe.mp3",
+  vine: "media/sounds/vine-boom.mp3",
+  dog: "media/sounds/what-the-dog-doin.mp3",
+  
 })
 
 sounds.toDestination();
 
 // UI elements
-let button1;
-let button2;
-let button3;
+let button1, button2, button3, button4, button5;
 
 let slider1;
 
@@ -31,17 +22,26 @@ function preload() {
 function setup() {
   createCanvas(400, 400);
 
-  button1 = createButton("Shot", 'shot');
-  button1.position(200, 300);
+  button1 = createButton("Among Us", 'amongUs');
+  button1.position(50, 175);
   button1.mousePressed(buttonSound);
   
-  button2 = createButton("through");
-  button2.position(200, 340);
-  button2.mousePressed( () => buttonSound('through') );
+  button2 = createButton("bonk");
+  button2.position(150, 175);
+  button2.mousePressed( () => buttonSound('bonk') );
 
-  button3 = document.getElementById('heartDiv');
-  button3.onclick = () => buttonSound('theHeart');
+  button3 = createButton('hehe');
+  button3.position(225, 175);
+  button3.mousePressed( () => buttonSound('hehe') );
 
+  button4 = createButton('vine');
+  button4.position(125, 200);
+  button4.mousePressed( () => buttonSound('vine') );
+
+  button5 = createButton('dog');
+  button5.position(175, 200);
+  button5.mousePressed( () => buttonSound('dog') );
+  
   slider1 = createSlider(0,1,0,0.1);
 }
 
@@ -51,14 +51,14 @@ function draw() {
 
 function keyPressed(){
   if(key==="1"){
-    sounds.player("shot").start();
+    sounds.player("amongUs").start();
   } else if (key === "2"){
-    sounds.player("through").start();
+    sounds.player("bonk").start();
   } else if (key === "3") {
-    sounds.player("theHeart").start();
+    sounds.player("hehe").start();
   }
 }
 
-function buttonSound(sound='shot') {
+function buttonSound(sound='amongUs') {
   sounds.player(sound).start();
 }
