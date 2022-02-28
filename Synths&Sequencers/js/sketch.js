@@ -1,37 +1,68 @@
-const duoSynth = new Tone.DuoSynth().toDestination();
-const reverb = new Tone.JCReverb(0.2).toDestination();
-duoSynth.connect(reverb);
+//Declare var here
+let slider, v;
 
+//Instuments
+const synth = new Tone.Synth({
+    "oscillator": {
+      "type": "sine"
+    },
+    "envelope": {
+      "attack": 0.001,
+      "decay": 0.1,
+      "sustain": 0.1,
+      "release": 1.2
+    }
+});
 
+//Effects
+const pingPong = new Tone.PingPongDelay().toDestination({
+    "delayTime": "4n",
+    "feedback": 0.2,
+  "wet": 0.5
+});
+
+synth.connect(pingPong);
+
+//Notes played on keys
 let notes = {
   'a': 'C5',
   's': 'D5',
   'd': 'E5',
   'f': 'F5',
-  'j': 'G5',
-  'k': 'A5',
-  'l': 'B5',
-  ';': 'C6'
+  'g': 'G5',
+  'h': 'A5',
+  'j': 'B5',
+  'k': 'C6'
 }
 
+//Functions
 function setup() {
   createCanvas(400, 400);
-  duoSynth.release = 2;
-  duoSynth.resonance = 0.98;
+
+  synth.release = 2;
+  synth.resonance = 0.98;
 
   //Hellp World to play when started
-duoSynth.triggerAttackRelease("C4", "8n");
+  synth.triggerAttackRelease("C4", "8n");
 
+  slider = new Nexus.Slider('#slider');
+  slider.on('change', (v)=>{
+    pingPong.delayTime = v;
+  })
+  
 }
 
 function draw() {
   background(220);
+  textSize(20);
+  text("Daniel's Synth", 120, 150);
+
+  textSize(18);
+  text("Use keys A, S, D, F, G, H, J, K to play", 50, 200);
 }
 
 function keyPressed() {
   let toPlay = notes[key];
   //console.log(toPlay);
-  duoSynth.triggerAttackRelease(toPlay, 0.1);
-  
-  //duoSynth.triggerAttackRelease("C2", "8n", '+1');
+  synth.triggerAttackRelease(toPlay, 0.4);
 }
