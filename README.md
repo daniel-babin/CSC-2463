@@ -18,3 +18,6 @@ Repository for CSC 2463 assignments
 
 ## 2.1 Sampler Assigment
 * https://daniel-babin.github.io/CSC-2463/BuildASampler 
+
+## 2.2 Synths and Sequences Assignment URL
+* https://daniel-babin.github.io/CSC-2463/Synths&Sequencers
