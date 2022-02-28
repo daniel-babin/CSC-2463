@@ -59,6 +59,9 @@ function draw() {
 
   textSize(18);
   text("Use keys A, S, D, F, G, H, J, K to play", 50, 200);
+
+  textSize(18);
+  text("Slide to change Ping Pong Delay", 0 ,20);
 }
 
 function keyPressed() {
