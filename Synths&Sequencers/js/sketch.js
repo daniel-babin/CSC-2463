@@ -46,14 +46,14 @@ function setup() {
   synth.triggerAttackRelease("C4", "8n");
 
   slider = new Nexus.Slider('#slider');
-  slider.on('change', (v)=>{
-    pingPong.delayTime = v;
+  slider.on('change', ()=>{
+    pingPong.delayTime.value = slider.value;
   })
   
 }
 
 function draw() {
-  background(220);
+  background(210);
   textSize(20);
   text("Daniel's Synth", 120, 150);
 
@@ -66,6 +66,6 @@ function draw() {
 
 function keyPressed() {
   let toPlay = notes[key];
-  //console.log(toPlay);
+  console.log(toPlay);
   synth.triggerAttackRelease(toPlay, 0.4);
 }
