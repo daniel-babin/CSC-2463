@@ -1,6 +1,8 @@
 let pitch = 800;
 let img;
 var instrument;
+var synthJSON;
+var effect1, effect2, effect3;
 
 function preload() {
   img = loadImage("media/jetsons.png");
@@ -9,7 +11,7 @@ function preload() {
 function make_Instrument() {
   // create synth
   instrument = new Tone.DuoSynth();
-  var synthJSON = {
+  synthJSON = {
       "vibratoAmount"  : 0.5 ,
     "vibratoRate"  : 5 ,
     "harmonicity"  : 1.5 ,
@@ -55,10 +57,8 @@ function make_Instrument() {
   
   instrument.set(synthJSON);
   
-  var effect1, effect2, effect3;
-  
   // create effects
-  var effect1 = new Tone.Phaser();
+  effect1 = new Tone.Phaser();
   effect1JSON = {
     "frequency": 12,
     "octaves": 3.3,
@@ -68,14 +68,14 @@ function make_Instrument() {
   };
   effect1.set(effect1JSON);
   
-  var effect2 = new Tone.Distortion();
+  effect2 = new Tone.Distortion();
   effect2JSON = {
     "distortion" : 0.08, 
     "wet" : 0.3
   };
   effect2.set(effect2JSON);
   
-  var effect3 = new Tone.Chorus();
+  effect3 = new Tone.Chorus();
   effect3JSON = {
     "frequency": 0.2,
     "delayTime": 20,
