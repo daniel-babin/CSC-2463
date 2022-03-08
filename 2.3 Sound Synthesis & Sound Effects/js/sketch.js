@@ -1,4 +1,9 @@
 let pitch = 800;
+let jetson;
+
+function preload() {
+  jetson = loadImage("jetsons.png");
+}
 
 // Set up Tone
 let osc = new Tone.AMOscillator(pitch,'sine','sine').start()
@@ -29,15 +34,12 @@ noise.connect(noiseFilter);
 
 function setup() {
   createCanvas(400, 400);
+  image("jetsons.png", 0, 0, 400, 400);
 }
 
 function draw() {
   background(249, 142, 29);
-
-  // console.log(frameCount);
-  // if((frameCount % 60) === 0 ) {
-  //   pitch = random(300, 1000);
-  // }
+  
 
 }
 
