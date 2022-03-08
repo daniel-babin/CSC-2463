@@ -1,8 +1,8 @@
 let pitch = 800;
-let jetson;
+let img;
 
 function preload() {
-  jetson = loadImage("jetsons.png");
+  img = loadImage("media/jetsons.png");
 }
 
 // Set up Tone
@@ -34,13 +34,14 @@ noise.connect(noiseFilter);
 
 function setup() {
   createCanvas(400, 400);
-  image("jetsons.png", 0, 0, 400, 400);
+  imageMode(CENTER);
+  image(img, 50, 50, 100, 100);
 }
 
 function draw() {
   background(249, 142, 29);
-  
-
+  textSize(30);
+  text("Press to Start", 100, 100);
 }
 
 function mousePressed() {
