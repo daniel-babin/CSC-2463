@@ -1,5 +1,6 @@
 let pitch = 800;
 let img;
+var instrument;
 
 function preload() {
   img = loadImage("media/jetsons.png");
@@ -7,7 +8,7 @@ function preload() {
 
 function make_Instrument() {
   // create synth
-  var instrument = new Tone.DuoSynth();
+  instrument = new Tone.DuoSynth();
   var synthJSON = {
       "vibratoAmount"  : 0.5 ,
     "vibratoRate"  : 5 ,
