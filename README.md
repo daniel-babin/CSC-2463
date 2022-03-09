@@ -23,4 +23,4 @@ Repository for CSC 2463 assignments
 * https://daniel-babin.github.io/CSC-2463/Synths&Sequencers
 
 ## 2.3 Sound Synthesis and Sound Effects URL
-* https://daniel-babin.github.io/CSC-2463/2.3%Sound%Synthesis%&%Sound%Effects
+* https://daniel-babin.github.io/CSC-2463/2.3%20Sound%20Synthesis%20&%20Sound%20Effects/
