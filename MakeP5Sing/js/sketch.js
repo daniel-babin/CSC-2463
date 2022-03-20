@@ -1,13 +1,38 @@
 
-//Universal Variables
+//Universal Variables for Draw
 let currentColor, red, orange, yellow, green, lightblue, blue, magenta, brown, white, black;
+
+//Instrument and Effect
+const synth = new Tone.Synth({
+  "oscillator": {
+    "type": "sine"
+  },
+  "envelope": {
+    "attack": 0.001,
+    "decay": 0.1,
+    "sustain": 0.1,
+    "release": 1.2
+  }
+});
+
+const pingPong = new Tone.PingPongDelay().toDestination({
+  "delayTime": "4n",
+  "feedback": 0.2,
+"wet": 0.5
+});
+
+synth.connect(pingPong);
 
 ///Canvas
 function setup() {
   createCanvas(1920, 969);
   background(255);
   currentColor = 0;
-//Makes color selection boxes
+
+  synth.release = 2;
+  synth.resonance = 0.98;
+
+  //Makes color selection boxes
   red = new colorBox(0, [255, 0, 0]);
   orange = new colorBox(25, [255, 182, 0]);
   yellow = new colorBox(50, [255, 255, 0]);
@@ -24,9 +49,11 @@ function draw(){
   if(mouseIsPressed){
     if(mouseX > 26){
       drawing();
+      synth.triggerAttackRelease();
     }
   }
-//Generates color selection boxes to canvas
+
+  //Generates color selection boxes to canvas
   red.appear();
   red.onMousePressed();
   orange.appear();
