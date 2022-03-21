@@ -49,6 +49,7 @@ function draw(){
   if(mouseIsPressed){
     if(mouseX > 26){
       drawing();
+      Tone.start();
       synth.triggerAttackRelease();
     }
   }
