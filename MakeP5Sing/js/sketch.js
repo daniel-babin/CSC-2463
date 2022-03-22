@@ -1,6 +1,11 @@
 
-//Universal Variables for Draw
+//Universal Variables
 let currentColor, red, orange, yellow, green, lightblue, blue, magenta, brown, white, black;
+
+//Melody for Background Music
+let pattern = new Tone.Pattern(function(time, note){
+  synth.triggerAttackRelease(note, 0.25, time);
+}, ["C4", "E4", "G4", "B4"]);
 
 //Instrument and Effect
 const synth = new Tone.Synth({
@@ -27,6 +32,10 @@ synth.connect(pingPong);
 function setup() {
   createCanvas(1920, 969);
   background(255);
+  Tone.start();
+  pattern.start(0);
+  Tone.Transport.start();
+
   currentColor = 0;
 
   synth.release = 2;
@@ -49,7 +58,7 @@ function draw(){
   if(mouseIsPressed){
     if(mouseX > 26){
       drawing();
-      Tone.start();
+      
       synth.triggerAttackRelease("D5", 0.1);
     }
   }
@@ -91,24 +100,34 @@ class colorBox{
       if(mouseX < 25){
         if(mouseY > 0 && mouseY < 25){
           currentColor = [255, 0, 0];
+          synth.triggerAttackRelease("C9", 0.01);
         } else if(mouseY > 25 && mouseY < 50){
          currentColor = [255, 182, 0];
+         synth.triggerAttackRelease("C8", 0.01);
         } else if(mouseY > 50 && mouseY < 75){
           currentColor = [255, 255, 0];
+          synth.triggerAttackRelease("C7", 0.01);
         }else if(mouseY > 75 && mouseY < 100){
           currentColor = [0, 255, 0];
+          synth.triggerAttackRelease("C6", 0.01);
         }else if(mouseY > 100 && mouseY < 125){
           currentColor = [0, 255, 255];
+          synth.triggerAttackRelease("C5", 0.01);
         }else if(mouseY > 125 && mouseY < 150){
           currentColor = [0, 0, 255];
+          synth.triggerAttackRelease("C4", 0.01);
         }else if(mouseY > 150 && mouseY < 175){
           currentColor = [127, 0, 255]
+          synth.triggerAttackRelease("C3", 0.01);
         }else if(mouseY > 175 && mouseY < 200){
           currentColor = "brown";
+          synth.triggerAttackRelease("C2", 0.01);
         }else if(mouseY > 200 && mouseY < 225){
           currentColor = "white";
+          synth.triggerAttackRelease("C1", 0.01);
         }else if(mouseY > 225 && mouseY < 250){
           currentColor = "black";
+          synth.triggerAttackRelease("D1", 0.01);
         }
       }  
     }
