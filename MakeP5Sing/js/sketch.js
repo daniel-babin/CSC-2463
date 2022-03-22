@@ -11,7 +11,7 @@ const synth = new Tone.Synth({
     "attack": 0.001,
     "decay": 0.1,
     "sustain": 0.1,
-    "release": 1.2
+    "release": 0.5
   }
 });
 
@@ -50,7 +50,7 @@ function draw(){
     if(mouseX > 26){
       drawing();
       Tone.start();
-      synth.triggerAttackRelease();
+      synth.triggerAttackRelease("D5", 0.1);
     }
   }
 
