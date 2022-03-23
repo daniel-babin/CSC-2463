@@ -59,6 +59,7 @@ function draw(){
     if(mouseX > 26){
       drawing();
       
+      synth.volume = -10;
       synth.triggerAttackRelease("D5", 0.1);
     }
   }
