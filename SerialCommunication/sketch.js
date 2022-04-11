@@ -6,7 +6,7 @@
 
     Draws the webpage, the shade of green of the background changes with the input from the potentiometer.
     Also transmits the mouseX coordinate as input to turn the LED on/off.
-  YouTube link:
+  YouTube link: https://youtube.com/shorts/dRVQEcxCRfQ?feature=share
 */
 
 let serialPDM;
