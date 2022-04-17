@@ -151,7 +151,7 @@ function drawing() {
   push();
   stroke(currentColor);
   strokeWeight(10);
-  line(sensor.xDirection, sensor.yDirection, mouseX, mouseY);
+  line(pmouseX, pmouseY, mouseX, mouseY);
   pop();
 }  
 
