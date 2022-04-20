@@ -2,10 +2,13 @@ let serialPDM;
 let portName = "COM3";
 
 //Arduino variables
-let sensor;
-let joyX;
-let joyY;
-let joyButton;
+let sensors;
+let joyX = 0;
+let joyY = 0;
+let pJoyX = -1;
+let pJoyY = -1;
+
+//let joyButton;
 
 //Universal Variables
 let currentColor, red, orange, yellow, green, lightblue, blue, magenta, brown, white, black;
@@ -50,7 +53,7 @@ function setup() {
   synth.resonance = 0.98;
 
   serialPDM = new PDMSerial(portName);
-  sensor = serialPDM.sensorData;
+  sensors = serialPDM.sensorData;
   joyX = serialPDM.scaledJoyX
   joyY = serialPDM.scaledJoyY
   joyButton = serialPDM.switchState
@@ -70,16 +73,19 @@ function setup() {
 
 function draw(){
   if(mouseIsPressed){
+    serialPDM.transmit("led", 1);
+    //console.log("led");
     if(mouseX > 26){
       drawing();
-      serialPDM.transmit('mouse', mouseIsPressed);
       
       synth.volume = -10;
       synth.triggerAttackRelease("D5", 0.1);
 
-      //console.log(sensor.a0);
-      //console.log(sensor.a5);
-      console.log(sensor.mouseButton);
+      console.log(sensors.scaledJoyX);
+      console.log(sensors.scaledJoyY);
+    }
+    else {
+      serialPDM.transmit("led", 0);
     }
   }
 
@@ -156,13 +162,15 @@ class colorBox{
 
 function drawing() {
   push();
+  let reverseJoyY = map(sensors.scaledJoyY, 0, 600, 600, 0);
+  if(pJoyX == -1){
+    pJoyX = sensors.scaledJoyX;
+    pJoyY = reverseJoyY; 
+  }
   stroke(currentColor);
   strokeWeight(10);
-  line(joyX, joyY, mouseX, mouseY);
+  line(pJoyX, pJoyY, sensors.scaledJoyX, reverseJoyY);
+  pJoyX = sensors.scaledJoyX;
+  pJoyY = reverseJoyY;
   pop();
 }  
-
-function mousePressed() {
-  serialPDM.transmit('mouse', mouseIsPressed);
-  //console.log(mouseX);
-}
