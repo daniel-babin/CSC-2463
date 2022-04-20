@@ -2,9 +2,10 @@ let serialPDM;
 let portName = "COM3";
 
 //Arduino variables
-let xDirection;
-let yDirection;
-let switchState;
+let sensor;
+let joyX;
+let joyY;
+let joyButton;
 
 //Universal Variables
 let currentColor, red, orange, yellow, green, lightblue, blue, magenta, brown, white, black;
@@ -37,7 +38,7 @@ synth.connect(pingPong);
 
 ///Canvas
 function setup() {
-  createCanvas(1920, 969);
+  createCanvas(800, 600);
   background(255);
   Tone.start();
   pattern.start(0);
@@ -49,9 +50,10 @@ function setup() {
   synth.resonance = 0.98;
 
   serialPDM = new PDMSerial(portName);
-  xDirection = serialPDM.xDirection
-  yDirection = serialPDM.yDirection
-  switchState = serialPDM.switchState
+  sensor = serialPDM.sensorData;
+  joyX = serialPDM.scaledJoyX
+  joyY = serialPDM.scaledJoyY
+  joyButton = serialPDM.switchState
 
   //Makes color selection boxes
   red = new colorBox(0, [255, 0, 0]);
@@ -70,9 +72,14 @@ function draw(){
   if(mouseIsPressed){
     if(mouseX > 26){
       drawing();
+      serialPDM.transmit('mouse', mouseIsPressed);
       
       synth.volume = -10;
       synth.triggerAttackRelease("D5", 0.1);
+
+      //console.log(sensor.a0);
+      //console.log(sensor.a5);
+      console.log(sensor.mouseButton);
     }
   }
 
@@ -151,7 +158,7 @@ function drawing() {
   push();
   stroke(currentColor);
   strokeWeight(10);
-  line(pmouseX, pmouseY, mouseX, mouseY);
+  line(joyX, joyY, mouseX, mouseY);
   pop();
 }  
 
