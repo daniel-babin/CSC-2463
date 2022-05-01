@@ -1,10 +1,18 @@
+///Graphic Variables
+let img;
+let img2;
+
+///Arduino variables
 //let serialPDM;
 //let portName = "COM3";
-
-//Arduino variables
 //let sensor;
 //let button;
 
+
+function preload() {
+  img = loadImage("media/rebekah.jpeg");
+  img2 = loadImage("media/rebekah2.jpeg");
+}
 
 function setup() {
   //serialPDM = new PDMSerial(portName);
@@ -22,8 +30,8 @@ function draw() {
   text('We Will Rock You Simulator', 375, 100);
 
   //Stomp
-  
+  image(img, 200, 200, 100, 100);
 
   //Clap
-
+  image(img2, 600, 200, 100, 100);
 }
