@@ -23,14 +23,14 @@ function setup() {
 
 function draw() {
   //Text
-  background(250);
+  background(255);
   textSize(50);
   textFont('Comic Sans MS');
   textAlign(CENTER);
   text('We Will Rock You Simulator', 375, 100);
 
   //Stomp
-  image(img, 200, 200, 100, 100);
+  image(img, 150, 250, 200, 200);
 
   //Clap
   image(img2, 600, 200, 100, 100);
