@@ -2,6 +2,12 @@
 let img;
 let img2;
 
+//Audio Variables
+const sounds = new Tone.Players({
+  stomp: "media/stomp.mp3",
+  clap: "media/clap.mp3",
+})
+
 ///Arduino variables
 //let serialPDM;
 //let portName = "COM3";
