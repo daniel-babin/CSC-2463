@@ -10,8 +10,8 @@ let img2;
 
 
 function preload() {
-  img = loadImage("media/rebekah.jpeg");
-  img2 = loadImage("media/rebekah2.jpeg");
+  img = loadImage("media/stomp.png");
+  img2 = loadImage("media/clap.png");
 }
 
 function setup() {
@@ -23,7 +23,7 @@ function setup() {
 
 function draw() {
   //Text
-  background(230);
+  background(250);
   textSize(50);
   textFont('Comic Sans MS');
   textAlign(CENTER);
