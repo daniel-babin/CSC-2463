@@ -3,16 +3,18 @@ let img;
 let img2;
 
 //Audio Variables
-const sounds = new Tone.Players({
-  stomp: "media/stomp.mp3",
-  clap: "media/clap.mp3",
-})
+//const sounds = new Tone.Players({
+//  stomp: "media/stomp.mp3",
+//  clap: "media/clap.mp3",
+//})
+let stomp;
+let clap;
 
 ///Arduino variables
-//let serialPDM;
-//let portName = "COM3";
-//let sensor;
-//let button;
+let serialPDM;
+let portName = "COM3";
+let sensor;
+let button;
 
 
 function preload() {
@@ -21,8 +23,11 @@ function preload() {
 }
 
 function setup() {
-  //serialPDM = new PDMSerial(portName);
-  //sensor = serialPDM.sensorData
+  serialPDM = new PDMSerial(portName);
+  sensor = serialPDM.sensorData
+
+  stomp = createAudio("media/stomp.mp3");
+  clap = createAudio("media/clap.mp3");
 
   createCanvas(800, 600);
 }
@@ -36,8 +41,20 @@ function draw() {
   text('We Will Rock You Simulator', 375, 100);
 
   //Stomp
+  tint(255, sensor.potentiometer);
   image(img, 100, 250, 200, 200);
 
   //Clap
   image(img2, 450, 250, 200, 200);
 }
+
+function playSound() {
+  if(sensor.button == 1 && sensor.potentiometer <= 127) {
+    stomp.autoplay(true);
+  }
+  if(sensor.button == 1 && sensor.potentiometer >= 128) {
+    clap.autoplay(true);
+  }
+  serialPDM.transmit('LED', sensor.potentiometer);
+}
+
