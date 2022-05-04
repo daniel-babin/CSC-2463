@@ -15,6 +15,7 @@ let serialPDM;
 let portName = "COM3";
 let sensor;
 let button;
+let potentiometerValue;
 
 
 function preload() {
@@ -25,6 +26,8 @@ function preload() {
 function setup() {
   serialPDM = new PDMSerial(portName);
   sensor = serialPDM.sensorData
+  button = serialPDM.buttonState;
+  potentiometerValue = serialPDM.potentiometer;
 
   stomp = createAudio("media/stomp.mp3");
   clap = createAudio("media/clap.mp3");
@@ -41,20 +44,26 @@ function draw() {
   text('We Will Rock You Simulator', 375, 100);
 
   //Stomp
-  tint(255, sensor.potentiometer);
-  image(img, 100, 250, 200, 200);
+  //tint(255, 127);
+  //image(img, 100, 250, 200, 200);
+  if (potentiometerValue <= 127) {
+    image(img, 100, 250, 200, 200);
+  }
 
   //Clap
-  image(img2, 450, 250, 200, 200);
+  //image(img2, 450, 250, 200, 200);
+  if (potentiometerValue >= 128) {
+    image(img2, 450, 250, 200, 200);
+  }
 }
 
 function playSound() {
-  if(sensor.button == 1 && sensor.potentiometer <= 127) {
+  if(sensor.button == 1 && potentiometerValue <= 127) {
     stomp.autoplay(true);
   }
-  if(sensor.button == 1 && sensor.potentiometer >= 128) {
+  if(sensor.button == 1 && potentiometerValue >= 128) {
     clap.autoplay(true);
   }
-  serialPDM.transmit('LED', sensor.potentiometer);
+  serialPDM.transmit('LED', 1);
 }
 
