@@ -3,10 +3,10 @@ let img;
 let img2;
 
 //Audio Variables
-//const sounds = new Tone.Players({
-//  stomp: "media/stomp.mp3",
-//  clap: "media/clap.mp3",
-//})
+const sounds = new Tone.Players({
+  stomp: "media/stomp.mp3",
+  clap: "media/clap.mp3",
+}).toDestination();
 let stomp;
 let clap;
 
@@ -26,13 +26,15 @@ function preload() {
 function setup() {
   serialPDM = new PDMSerial(portName);
   sensor = serialPDM.sensorData
-  button = serialPDM.buttonState;
-  potentiometerValue = serialPDM.potentiometer;
+  button = sensor.button;
+  potentiometerValue = sensor.potentiometer;
 
-  stomp = createAudio("media/stomp.mp3");
-  clap = createAudio("media/clap.mp3");
+  //stomp = createAudio("media/stomp.mp3");
+  //clap = createAudio("media/clap.mp3");
 
   createCanvas(800, 600);
+  console.log("potentiometer value: ", sensor.potentiometer);
+  console.log("button state: ", sensor.button);
 }
 
 function draw() {
@@ -44,26 +46,31 @@ function draw() {
   text('We Will Rock You Simulator', 375, 100);
 
   //Stomp
-  //tint(255, 127);
-  //image(img, 100, 250, 200, 200);
-  if (potentiometerValue <= 127) {
+  tint(255, 127);
+  image(img, 100, 250, 200, 200);
+  if (sensor.potentiometer <= 400 && sensor.button == 1) {
     image(img, 100, 250, 200, 200);
   }
 
   //Clap
-  //image(img2, 450, 250, 200, 200);
-  if (potentiometerValue >= 128) {
+  image(img2, 450, 250, 200, 200);
+  if (sensor.potentiometer >= 401 && sensor.button == 1) {
     image(img2, 450, 250, 200, 200);
   }
+
+  checkSound();
 }
 
-function playSound() {
-  if(sensor.button == 1 && potentiometerValue <= 127) {
-    stomp.autoplay(true);
+function checkSound() {
+  if(sensor.button == 1 && sensor.potentiometer <= 400) {
+    sounds.player("stomp").start();
+    serialPDM.transmit('LED', 1);
+    console.log("play stomp");
   }
-  if(sensor.button == 1 && potentiometerValue >= 128) {
-    clap.autoplay(true);
+  if(sensor.button == 1 && sensor.potentiometer >= 401) {
+    sounds.player("clap").start(); 
+    serialPDM.transmit('LED', 1); 
+    console.log("play clap");
   }
-  serialPDM.transmit('LED', 1);
 }
 
