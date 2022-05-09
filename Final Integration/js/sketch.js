@@ -1,6 +1,7 @@
 ///Graphic Variables
 let img;
 let img2;
+let img3;
 
 //Audio Variables
 const sounds = new Tone.Players({
@@ -21,6 +22,7 @@ let potentiometerValue;
 function preload() {
   img = loadImage("media/stomp.png");
   img2 = loadImage("media/clap.png");
+  img3 = loadImage("media/freddie.jpg")
 }
 
 function setup() {
@@ -40,10 +42,13 @@ function setup() {
 function draw() {
   //Text
   background(235);
+  tint(255, 250);
+  image(img3, 0, 0, 800, 600);
   textSize(50);
   textFont('Comic Sans MS');
   textAlign(CENTER);
-  text('We Will Rock You Simulator', 375, 100);
+  fill(249, 142, 29);
+  text('We Will, We Will Rock You', 400, 100);
 
   //Stomp
   tint(255, 127);
@@ -53,9 +58,9 @@ function draw() {
   }
 
   //Clap
-  image(img2, 450, 250, 200, 200);
+  image(img2, 500, 250, 200, 200);
   if (sensor.potentiometer >= 401 && sensor.button == 1) {
-    image(img2, 450, 250, 200, 200);
+    image(img2, 500, 250, 200, 200);
   }
 
   checkSound();
