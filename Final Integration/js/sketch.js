@@ -1,3 +1,14 @@
+/*
+  Daniel Babin
+  CSC 2463
+  Dr. Allison
+
+  The graphic and Tone.js part of my final integration project. This code contains the sounds and images used
+  in the graphic, along with the data received from the Arduino to change the graphics and trigger the sound.
+
+  YouTube: https://youtu.be/tcvwg0Qo1eE
+*/
+
 ///Graphic Variables
 let img;
 let img2;
