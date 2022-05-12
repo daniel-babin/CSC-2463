@@ -13,7 +13,7 @@ Graphics: The P5 site consists of an image of a leg and a pair of clapping hands
 
 Audio: Using the Tone.js player, two sound bits from the song play when triggered. One sound is the stomp sound and the other is the clap.
 
-Arduino: The breadboard has two inputs (a potentiometer and a button) and two outputs (two LEDs). The first input is a potentiometer that does two things, it is used to choose between the stomp and the clap, as well as adjusting the brightness of the left LED on the breadboard. The other input, the button, is used to finalize the selection between stomp and clap, triggering the graphics change and the audio.
+Arduino: The breadboard has two inputs (a potentiometer and a button) and two outputs (two LEDs). The first input is a potentiometer that does two things, it is used to choose between the stomp (turn anywhere between the left and the middle) and the clap (turn anywhere between the middle and the right), as well as adjusting the brightness of the left LED on the breadboard. The other input, the button, is used to finalize the selection between stomp and clap, triggering the graphics change, triggering the audio, and turning on the right LED for the duration it is held down.
 
 ![arduino_example_new](https://user-images.githubusercontent.com/97774747/168176488-8e036b14-c148-4383-afc0-71a2f3345181.jpeg)
 
