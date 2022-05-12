@@ -11,3 +11,6 @@ Graphics: The P5 site consists of an image of a leg and a pair of clapping hands
 Audio: Using the Tone.js player, two sound bits from the song play when triggered. One sound is the stomp sound and the other is the clap.
 
 Arduino: The breadboard has two inputs (a potentiometer and a button) and two outputs (two LEDs). The first input is a potentiometer that does two things, it is used to choose between the stomp and the clap, as well as adjusting the brightness of the left LED on the breadboard. The other input, the button, is used to finalize the selection between stomp and clap, triggering the graphics change and the audio.
+
+## Future Development
+Why just play the stomp and clap in any way you want when you can play along with the song. In future versions, the play along with the vocals of the song, and when you successfully play the stomps and claps along with the song, you win.
