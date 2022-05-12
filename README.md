@@ -20,6 +20,9 @@ Arduino: The breadboard has two inputs (a potentiometer and a button) and two ou
 
 ### Original Concept and Evolution
 My original concept for the project was very similar, with the inputs from the Arduino controlling the different sounds of a drum set. The parts of the set would have also been set to 50% alpha, then full alpha when triggered. I found with so many different choices with the potentiometer, it would be very difficult to choose which drum part the user wanted to play. Knowing this I knew I had to lower the amount of inputs, and I figured since the stomps and claps from "We Will Rock You" are so iconic and simple, it would be perfect.
+Pictured below is the rough schematic I drew up when brainstorming the new project:
+![final_schematic](https://user-images.githubusercontent.com/97774747/168180647-df99a0d6-9ffb-431d-81fe-60a2ed5dde48.jpeg)
+
 
 ## Future Development
 Why just play the stomp and clap in any way you want when you can play along with the song. In future versions, the play along with the vocals of the song, and when you successfully play the stomps and claps along with the song, you win.
