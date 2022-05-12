@@ -7,6 +7,8 @@ YouTube Link: https://youtu.be/tcvwg0Qo1eE
 
 ### Project Components
 Graphics: The P5 site consists of an image of a leg and a pair of clapping hands, representing which sound from the song it makes. The images are at 50% alpha until triggered, then the images switch to full alpha.
+![graphics _example](https://user-images.githubusercontent.com/97774747/168176135-5f2123f3-ba5b-4794-9b94-aee3069f1cf3.png)
+
 
 Audio: Using the Tone.js player, two sound bits from the song play when triggered. One sound is the stomp sound and the other is the clap.
 
